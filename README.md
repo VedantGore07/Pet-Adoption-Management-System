@@ -1,40 +1,23 @@
-# Pet-Adoption-Management-System
-
-Overview
+🐾 Pet Adoption Management System
+📌 Overview
 
 The Pet Adoption Management System is a microservices-based solution designed to streamline the operations of animal shelters and adoption agencies by digitizing and automating key processes. It manages pet profiles, adopter details, adoption workflows, medical and vaccination records, and volunteer contributions.
 
 The solution ensures compliance with adoption and health regulations, trans'parency in operations, reduced manual errors, and an improved adoption experience for both adopters and shelter staff.
 
-
-
-
-Technology Stack
-
-Architecture: Microservices
-
-Registry: Eureka Server
-
-API Gateway: Spring Cloud Gateway
-
-Backend: Java, Spring Boot
-
-Service-to-Service Communication: Feign Client
-
-Frontend: Thymeleaf
-
-Database: MySQL
-
-Security: Security Service (Spring Security-based centralized authentication and authorization)
-
-Cross-Cutting Concerns: Global Exception Handling, Validation Service
-
-
-
-
-Microservices & Responsibilities
-
-1. Pet Service
+🧰 Technology Stack
+Category	Technology
+Architecture	Microservices
+Registry	Eureka Server
+API Gateway	Spring Cloud Gateway
+Backend	Java, Spring Boot
+Service-to-Service Communication	Feign Client
+Frontend	Thymeleaf
+Database	MySQL
+Security	Security Service (Spring Security-based centralized authentication and authorization)
+Cross-Cutting Concerns	Global Exception Handling, Validation Service
+🧩 Microservices & Responsibilities
+1️⃣ Pet Service
 
 Register and manage pet profiles (Pet ID, name, type, breed, age, health status, vaccination status, adoption status).
 
@@ -46,10 +29,7 @@ Integrates with Medical & Vaccination Service for health records.
 
 Access controlled via Security Service (only authorized roles can update or register pets).
 
-
-
-
-2. Adopter Service
+2️⃣ Adopter Service
 
 Register adopters with unique Adopter ID.
 
@@ -61,10 +41,7 @@ Integrates with Adoption Service to track requests and approvals.
 
 Communicates with Security Service for role-based access and authentication.
 
-
-
-
-3. Adoption Service
+3️⃣ Adoption Service
 
 Handle adoption requests from adopters.
 
@@ -74,7 +51,7 @@ Approve or reject adoption requests.
 
 Volunteers assist adopters during adoption drives.
 
-Integrates with:
+Integrations:
 
 Validation Service → eligibility checks.
 
@@ -82,10 +59,7 @@ Medical & Vaccination Service → ensure pets are medically cleared before appro
 
 Security Service → verify requester's role and permissions (Admin approval, Adopter request submission).
 
-
-
-
-4. Medical & Vaccination Service
+4️⃣ Medical & Vaccination Service
 
 Maintain medical and vaccination records for pets.
 
@@ -95,7 +69,7 @@ Send reminders for upcoming/due vaccinations.
 
 Generate pet health certificates for adopters.
 
-Integrates with:
+Integrations:
 
 Adoption Service (adoption approval checks).
 
@@ -103,10 +77,7 @@ Validation Service (rule enforcement).
 
 Security Service (authentication for medical staff and vets).
 
-
-
-
-5. Validation Service
+5️⃣ Validation Service
 
 Centralized service for enforcing business rules across microservices.
 
@@ -120,13 +91,7 @@ Adoption rules: max pets, duplicate requests.
 
 Medical rules: vaccination schedules, health clearances.
 
-
-
-
-
-
-
-6. Security Service
+6️⃣ Security Service
 
 Centralized Authentication and Authorization Microservice using Spring Security and JWT (JSON Web Tokens).
 
@@ -152,11 +117,7 @@ Integrate with API Gateway for token validation.
 
 Centralize security policies for consistency across services.
 
-
-
-
-Volunteer Role
-
+🤝 Volunteer Role
 Responsibilities
 
 Assist Admin and Staff in adoption events and campaigns.
@@ -167,99 +128,22 @@ Help adopters with registration during events.
 
 Participate in outreach campaigns and awareness programs.
 
-
-
-
-Frontend (Thymeleaf) - UI Pages
-
-UI Page
-
-Description
-
-Validations & Integrations
-
-Home Page
-
-Landing page with navigation for Adopters, Admin, Staff, Volunteers.
-
-Security Service → role-based authentication
-
-Register Pet Page
-
-Add new pets with details.
-
-Validation Service → check valid type, age > 0.
-
-View Pet Details Page
-
-Search by Pet ID or list all pets.
-
-Fetches vaccination/health info (Medical Service).
-
-Register Adopter Page
-
-Adopter registration form.
-
-Validation Service → unique email/phone, valid address.
-
-Update Adopter Page
-
-Modify adopter details/preferences.
-
-Validation Service → contact info validation.
-
-Adoption Request Page
-
-Adopter submits adoption request.
-
-Validation Service + Medical Service checks.
-
-Adoption Approval Page (Admin)
-
-Admin approves/rejects adoption requests.
-
-Integrates with Medical Service.
-
-Vaccination Management Page (Vet/Staff)
-
-Add/update vaccination details.
-
-Validation Service → schedule enforcement.
-
-Health Certificate Page
-
-Download/view health certificate.
-
-Medical Service integration.
-
-Volunteer Dashboard
-
-Landing page for volunteers.
-
-Security Service → role validation.
-
-Assigned Pets Page (Volunteer)
-
-Volunteers view/manage pets assigned to them.
-
-Pet Service integration.
-
-Daily Pet Update Page (Volunteer)
-
-Volunteers log daily observations (behavior, feeding).
-
-Validation Service.
-
-Event Participation Page (Volunteer)
-
-Register for adoption events.
-
-Event management.
-
-
-
-
-Inter-Microservice Communication Examples
+🎨 Frontend (Thymeleaf) – UI Pages
+UI Page	Description	Validations & Integrations
+Home Page	Landing page with navigation for Adopters, Admin, Staff, Volunteers.	Security Service → role-based authentication
+Register Pet Page	Add new pets with details.	Validation Service → check valid type, age > 0
+View Pet Details Page	Search by Pet ID or list all pets.	Fetches vaccination/health info (Medical Service)
+Register Adopter Page	Adopter registration form.	Validation Service → unique email/phone, valid address
+Update Adopter Page	Modify adopter details/preferences.	Validation Service → contact info validation
+Adoption Request Page	Adopter submits adoption request.	Validation Service + Medical Service checks
+Adoption Approval Page (Admin)	Admin approves/rejects adoption requests.	Integrates with Medical Service
+Vaccination Management Page (Vet/Staff)	Add/update vaccination details.	Validation Service → schedule enforcement
+Health Certificate Page	Download/view health certificate.	Medical Service integration
+Volunteer Dashboard	Landing page for volunteers.	Security Service → role validation
+Assigned Pets Page (Volunteer)	Volunteers view/manage pets assigned to them.	Pet Service integration
+Daily Pet Update Page (Volunteer)	Volunteers log daily observations (behavior, feeding).	Validation Service
+Event Participation Page (Volunteer)	Register for adoption events.	Event management
+🔄 Inter-Microservice Communication Examples
 
 Adoption Service → Validation Service → Verify adopter eligibility and pet availability.
 
@@ -269,10 +153,7 @@ Volunteer UI → Pet Service → Update pet photos and daily notes.
 
 API Gateway → Security Service → Validate user authentication and authorization before forwarding requests.
 
-
-
-
-Security (Now handled by Security Service)
+🔐 Security (Now handled by Security Service)
 
 Admin: Full access (pets, adopters, adoptions, medical records).
 
@@ -286,22 +167,12 @@ Staff: Assist in managing adoption and shelter operations.
 
 Centralized authentication & token-based authorization across all services.
 
-
-
-
-
-
-
-Pet Adoption Management System - Docker Deployment Guide
-
-1. Objective
+🐳 Pet Adoption Management System – Docker Deployment Guide
+1️⃣ Objective
 
 This document provides a high-level approach for deploying the Pet Adoption Management System (microservices-based architecture) using Docker containers. It ensures all microservices, databases, and supporting components run in isolated containers, promoting portability, consistency, and easy scaling.
 
-2. Pre-Requisites
-
-Before deployment, ensure the following are available:
-
+2️⃣ Pre-Requisites
 Infrastructure
 
 Linux or Windows host machine or cloud VM with Docker installed.
@@ -330,12 +201,11 @@ Understanding of microservices architecture.
 
 Familiarity with containerization concepts (Docker images, containers, volumes, networks).
 
-3. Deployment Architecture
+3️⃣ Deployment Architecture
 
 The system consists of multiple microservices communicating via REST APIs and Feign clients, with centralized security and cross-cutting concerns.
 
 Docker Architecture Overview
-
 Containers
 
 Each microservice runs in its own Docker container.
@@ -366,8 +236,7 @@ Eureka Server URL
 
 Security Service JWT secrets
 
-4. Deployment Steps (High-Level)
-
+4️⃣ Deployment Steps (High-Level)
 Step 1: Clone Application Repository
 
 Pull the latest code from Git repository for all microservices and frontend.
@@ -381,8 +250,9 @@ Tag images appropriately (e.g., pet-service:latest, adopter-service:latest).
 Step 3: Configure Docker Network
 
 Create a dedicated Docker network for all microservices to communicate internally.
+Example:
 
-Example: docker network create pet-adoption-network.
+docker network create pet-adoption-network
 
 Step 4: Configure Persistent Volumes
 
@@ -413,13 +283,11 @@ Role-based environment settings (e.g., security service credentials).
 Step 7: Deploy API Gateway
 
 Run API Gateway container to route requests to appropriate microservices.
-
 Connect to Security Service for token-based validation.
 
 Step 8: Deploy Frontend
 
 Deploy Thymeleaf frontend container.
-
 Connect frontend container to API Gateway.
 
 Step 9: Verify Inter-Service Communication
@@ -436,3 +304,52 @@ Verify database connectivity and correct environment configurations.
 
 Validate user authentication and role-based access via Security Service.
 
+
++---------------------------+
+|   Browser / UI Layer      |
+|   (Thymeleaf Frontend)    |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|      API Gateway          |
+|  (Spring Cloud Gateway)   |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|     Security Service      |
+| (Spring Security + JWT)   |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|      Eureka Server        |
+|  (Service Discovery)     |
++-------------+-------------+
+              |
+              v
++---------------------------------------------------+
+|               Core Microservices                  |
+|                                                   |
+|  +-----------+   +-----------+   +-------------+ |
+|  | Pet       |   | Adopter   |   | Adoption    | |
+|  | Service   |   | Service   |   | Service     | |
+|  +-----------+   +-----------+   +-------------+ |
+|        |                 |              |        |
+|        +--------+--------+--------------+        |
+|                 |                               |
+|      +---------------------------+              |
+|      | Medical & Vaccination     |              |
+|      | Service                   |              |
+|      +---------------------------+              |
+|                 |                               |
+|      +---------------------------+              |
+|      | Validation Service        |              |
+|      +---------------------------+              |
++---------------------------------------------------+
+              |
+              v
++---------------------------+
+|        MySQL Database     |
++---------------------------+
